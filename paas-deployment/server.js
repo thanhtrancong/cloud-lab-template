@@ -14,6 +14,16 @@ app.get('/', (req, res) => {
     });
 });
 
+// Strict Environment Validation
+const SECURE_KEY = process.env.API_KEY;
+
+if (!SECURE_KEY) {
+    console.error('[FATAL ERROR] API_KEY environment variable is missing.');
+    console.error('[SYSTEM] Halting initialization to prevent insecure execution.');
+    process.exit(1); 
+}
+
+
 const server = app.listen(PORT, () => {
     console.log(`[SYSTEM] Server initializing on port ${PORT} in ${ENV} mode.`);
 });
