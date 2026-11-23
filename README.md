@@ -30,7 +30,7 @@ Cần đặt `DATABASE_URL` thành connection string PostgreSQL có `sslmode=req
 ```bash
 cd lab04-dbaas
 npm ci
-DATABASE_URL='postgresql://USER:PASSWORD@HOST:5432/DB?sslmode=require' npm start
+DATABASE_URL='postgresql://USER:PASSWORD@HOST:5432/DB?sslmode=require' node server.js
 ```
 
 - `GET /healthz`: kiểm tra kết nối và trả về thông tin/độ trễ database.
