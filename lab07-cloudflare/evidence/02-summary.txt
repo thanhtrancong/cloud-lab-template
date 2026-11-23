@@ -1,0 +1,82 @@
+Lab 07: Cloudflare Worker - Setup Summary
+==========================================
+
+PROJECT STRUCTURE
+=================
+lab07-cloudflare/
+├── src/worker.js              - Main Worker script
+├── wrangler.toml              - Cloudflare configuration
+├── package.json               - Dependencies
+├── .lab07.env                 - Environment template
+├── GUIDE.md                   - Detailed guide
+├── README.md                  - Setup docs
+├── QUICKSTART.sh              - Quick reference
+└── scripts/
+    ├── setup.sh              - Setup script
+    ├── deploy.sh             - Deploy script
+    └── test.sh               - Test script
+
+CONFIGURATION
+==============
+Domain: vlsc07-nguyenvana.site
+FQDN: api.vlsc07-nguyenvana.site
+Student ID: 2021001
+Origin Host: https://vlsc-cloud-app-2001100123.onrender.com
+Worker URL: https://cloud-lab-worker.workers.dev
+
+FEATURES IMPLEMENTED
+====================
+✓ Request proxy to origin host
+✓ Custom headers:
+  - X-Forwarded-For (client IP)
+  - X-Forwarded-Proto (https)
+  - X-Forwarded-Host (hostname)
+  - X-Powered-By (Cloudflare Workers)
+  - X-Cache (HIT)
+✓ CORS support
+✓ Error handling (502 on origin failure)
+✓ Request body forwarding
+✓ Response body forwarding
+
+DEPLOYMENT STEPS
+================
+1. Update ~/.lab07.env with your config
+2. Run: bash scripts/setup.sh
+3. Run: wrangler login
+4. Update wrangler.toml with your domain
+5. Run: wrangler deploy
+6. Test: bash scripts/test.sh
+7. Wait for DNS propagation
+8. Test domain: curl https://api.vlsc07-nguyenvana.site/
+
+TESTING COMMANDS
+================
+# Check worker
+curl -i https://cloud-lab-worker.workers.dev/
+
+# Check headers
+curl -v https://cloud-lab-worker.workers.dev/ 2>&1 | grep "X-"
+
+# Check origin proxy
+curl https://cloud-lab-worker.workers.dev/api/health
+
+# Check DNS
+nslookup api.vlsc07-nguyenvana.site
+
+DOCUMENTATION FILES
+===================
+1. GUIDE.md - Full step-by-step guide (5000+ chars)
+2. README.md - Setup and configuration guide
+3. QUICKSTART.sh - Quick reference with commands
+4. evidence/00-env.txt - Environment variables
+5. evidence/01-setup.txt - Setup evidence
+6. evidence/02-summary.txt - This file
+
+GIT COMMITS
+===========
+fc9c627 - feat(lab07): setup Cloudflare Worker with proxy and custom headers
+f9ec627 - docs(lab07): add quickstart guide
+
+READY FOR DEPLOYMENT
+====================
+All files and scripts are ready. Next step is to deploy!
