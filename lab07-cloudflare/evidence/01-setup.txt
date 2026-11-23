@@ -1,0 +1,32 @@
+Lab 07: Cloudflare Worker Evidence
+==================================
+
+Configuration:
+- Domain: vlsc07-nguyenvana.site
+- FQDN: api.vlsc07-nguyenvana.site
+- Student ID: 2021001
+- Origin Host: https://vlsc-cloud-app-2001100123.onrender.com
+- Worker URL: https://cloud-lab-worker.workers.dev
+
+Files Created:
+✓ src/worker.js - Main Cloudflare Worker script
+✓ wrangler.toml - Cloudflare/Wrangler configuration
+✓ package.json - Node.js dependencies
+✓ README.md - Setup documentation
+✓ scripts/setup.sh - Setup script
+✓ scripts/deploy.sh - Deploy script
+✓ scripts/test.sh - Test script
+
+Worker Features:
+✓ Proxy requests to origin host
+✓ Add custom headers (X-Forwarded-*, X-Powered-By)
+✓ CORS support
+✓ Error handling (502 on origin failure)
+
+Next Steps:
+1. Update ~/.lab07.env with your actual values
+2. Run: bash scripts/setup.sh
+3. Run: wrangler login
+4. Update wrangler.toml with your domain
+5. Run: bash scripts/deploy.sh
+6. Run: bash scripts/test.sh to verify

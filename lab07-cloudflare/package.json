@@ -1,0 +1,17 @@
+{
+  "name": "cloud-lab-worker",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker for cloud lab template",
+  "main": "src/worker.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "publish": "wrangler publish"
+  },
+  "keywords": ["cloudflare", "worker", "proxy"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.60.0"
+  }
+}

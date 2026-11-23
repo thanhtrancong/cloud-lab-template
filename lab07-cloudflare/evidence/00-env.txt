@@ -1,0 +1,5 @@
+DOMAIN=vlsc07-nguyenvana.site
+GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN=app.github.dev
+ORIGIN_HOST=vlsc07-api.onrender.com
+FQDN=api.vlsc07-nguyenvana.site
+STUDENT_ID=2021001
