@@ -1,0 +1,132 @@
+== STEP 3: BUILD + RUN ==
+2026-10-26T05:57:57Z
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.47kB done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+#2 ...
+
+#3 [auth] docker/dockerfile:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+#2 DONE 1.4s
+
+#4 docker-image://docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
+#4 resolve docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e 0.0s done
+#4 CACHED
+
+#5 [internal] load metadata for docker.io/library/node:20-alpine
+#5 ...
+
+#6 [auth] library/alpine:pull token for registry-1.docker.io
+#6 DONE 0.0s
+
+#7 [auth] library/node:pull token for registry-1.docker.io
+#7 DONE 0.0s
+
+#8 [internal] load metadata for docker.io/library/alpine:3.20
+#8 ...
+
+#5 [internal] load metadata for docker.io/library/node:20-alpine
+#5 DONE 1.3s
+
+#8 [internal] load metadata for docker.io/library/alpine:3.20
+#8 DONE 1.3s
+
+#9 [internal] load .dockerignore
+#9 transferring context: 137B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 DONE 0.0s
+
+#11 [runner 1/8] FROM docker.io/library/alpine:3.20@sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc
+#11 resolve docker.io/library/alpine:3.20@sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc 0.0s done
+#11 CACHED
+
+#12 [builder 1/7] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#12 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.0s done
+#12 DONE 0.0s
+
+#13 [runner 2/8] RUN apk add --no-cache libstdc++   && addgroup -S app   && adduser -S -G app -H -s /sbin/nologin app
+#13 ...
+
+#10 [internal] load build context
+#10 transferring context: 219B done
+#10 DONE 0.1s
+
+#14 [builder 2/7] WORKDIR /app
+#14 CACHED
+
+#15 [builder 3/7] COPY package.json package-lock.json ./
+#15 CACHED
+
+#16 [builder 4/7] RUN npm ci
+#16 CACHED
+
+#17 [builder 5/7] COPY tsconfig.json ./
+#17 CACHED
+
+#18 [builder 6/7] COPY src ./src
+#18 CACHED
+
+#19 [builder 7/7] RUN npm run build   && npm prune --omit=dev   && npm cache clean --force
+#19 CACHED
+
+#13 [runner 2/8] RUN apk add --no-cache libstdc++   && addgroup -S app   && adduser -S -G app -H -s /sbin/nologin app
+#13 1.154 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/main/x86_64/APKINDEX.tar.gz
+#13 1.242 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/community/x86_64/APKINDEX.tar.gz
+#13 1.517 (1/2) Installing libgcc (13.2.1_git20240309-r1)
+#13 1.523 (2/2) Installing libstdc++ (13.2.1_git20240309-r1)
+#13 1.546 OK: 10 MiB in 16 packages
+#13 DONE 1.7s
+
+#20 [runner 3/8] COPY --from=builder /usr/local/bin/node /usr/local/bin/node
+#20 DONE 9.3s
+
+#21 [runner 4/8] WORKDIR /app
+#21 DONE 0.1s
+
+#22 [runner 5/8] COPY --from=builder --chown=app:app /app/package.json ./package.json
+#22 DONE 0.1s
+
+#23 [runner 6/8] COPY --from=builder --chown=app:app /app/package-lock.json ./package-lock.json
+#23 DONE 0.1s
+
+#24 [runner 7/8] COPY --from=builder --chown=app:app /app/node_modules ./node_modules
+#24 DONE 0.9s
+
+#25 [runner 8/8] COPY --from=builder --chown=app:app /app/dist ./dist
+#25 DONE 0.1s
+
+#26 exporting to image
+#26 exporting layers
+#26 exporting layers 2.8s done
+#26 exporting manifest sha256:243385ff6f50d441ca54faa7765805931b9fbe5ead7dbf26ba3ba1fa2578ad1e 0.0s done
+#26 exporting config sha256:eb17b1baacccbee1705b8264f5fdeb108d40606b18292cd6810d76b0763eb205 0.0s done
+#26 exporting attestation manifest sha256:8edf345f274ab182dfe9dcc9525c2605d73f1094232ca5bf6ea0fa3debd8ee8b 0.0s done
+#26 exporting manifest list sha256:0e1cc989492fd53d339ca873ff9ce5282ef739af70204abf5f7afe45d449f644 0.0s done
+#26 naming to ghcr.io/thanhtrancong/vlsc-s05-api:1.0.0 done
+#26 unpacking to ghcr.io/thanhtrancong/vlsc-s05-api:1.0.0
+#26 unpacking to ghcr.io/thanhtrancong/vlsc-s05-api:1.0.0 0.9s done
+#26 DONE 3.8s
+arch=amd64 os=linux bytes=162421257 student=2001100659
+fddec91dc4469a48644b600f9b418b170eba63d969441cac5b7217830bf92fab
+Waiting for the app to start...
+--- /info ---
+{"service":"vlsc-s05-api","appEnv":"production","studentId":"2001100659","hostname":"fddec91dc446","arch":"x64","platform":"linux","nodeVersion":"v20.20.2","uptimeSeconds":4}
+--- /health ---
+http=200
+--- user (must be DIFFERENT root) ---
+uid=100(app) gid=101(app) groups=101(app)
+--- limits (must be 268435456) ---
+268435456
+--- logs ---
+vlsc-s05-api listening on 0.0.0.0:3000 env=production
+Waiting 35s for Docker to run Healthcheck...
+--- health status (Must be healthy) ---
+healthy

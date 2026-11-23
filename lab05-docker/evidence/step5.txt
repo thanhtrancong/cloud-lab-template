@@ -1,0 +1,8 @@
+== STEP 5: PAAS VERIFICATION ==
+2026-10-26T06:21:23Z
+RENDER_URL=https://vlsc-s05-2001100659.onrender.com
+--- /health (chờ cold start ~1 phút) ---
+http=404 total=0.419007s
+--- /info ---
+Not Found
+
